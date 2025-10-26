@@ -8,13 +8,17 @@
     (<arguments>)
     {<value>}; 
     
-    <name> == {{<value>}; "<class>"; "<original name>"; ; ; }
+    <name> == {{<value>}; "<class>"; "<original name>";}
     <name>[0]/<name>._val == {<value>}
     <name>[1] == "<class>"
     <name>._cl == <class>
     <name>[2]/<name>._nm == "<original name>"
     <name>._parent == <parent name>
     <name>._arg == obj arg{<named objects from (<arguments>)>}
+
+    <name>(<arguments>); -> init <name>
+    (<neede args>){<value>}(<input args>); -> execution <value> with <args>
+    obj t{1;};
     #
 
     obj Name
