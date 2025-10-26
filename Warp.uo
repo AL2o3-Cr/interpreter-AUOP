@@ -3,38 +3,37 @@
     #coments
     
     coments#
-    obj Name
-    {
-        obj x
-        {
-            1;
-        }();
-        obj y
-        {
-            3;
-        }();
-    }();
-    obj lp
-    {
-        obj bg
-        {
-            ret("golf")
-        };
-        meth init
-        (obj name, obj value)
-        {
-            parent.NewObj(arg.name, arg.value);
-        };
-    };
-    lp test1
-    {
-        # -> test1 == lp.body & lp.init(arguments)#
-    }("i", 0); # -> test1.i == 1; test1.bg == {ret("golf")}#
     #
     <class> <name>
     (<arguments>)
-    {<value>};
+    {<value>}; 
     
-    <name> == {{<value>}; "<class>"; "<name>";}  <name>[0] == {<value>}  <name>[1] == "<class>"  <name>[2] == "<name>"
+    <name> == {{<value>}; "<class>"; "<original name>"; ; ; }
+    <name>[0]/<name>._val == {<value>}
+    <name>[1] == "<class>"
+    <name>._cl == <class>
+    <name>[2]/<name>._nm == "<original name>"
+    <name>._parent == <parent name>
+    <name>._arg == obj arg{<named objects from (<arguments>)>}
     #
-}();
+
+    obj Name
+    {
+        obj x{1;};
+        obj y{3;};
+    };
+    obj lp
+    (\ obj *) #any named objects#
+    {
+        obj bg
+        {
+            "golf"
+        };
+    };
+    lp(obj i{0;};) test1
+    ()
+    {
+        # -> test1 == lp.init(arguments)#
+        1; # -> #
+    }; # -> test1.i == 1; test1.bg == {ret("golf")}#
+};
