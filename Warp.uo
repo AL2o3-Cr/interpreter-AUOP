@@ -1,24 +1,46 @@
-(#input arguments#)
+(#input arguments for the entire file#)
 {
     #coments
     
     coments#
-    #
-    <class> <name>
-    (<arguments>)
-    {<value>}; 
-    
-    <name> == {{<value>}; "<class>"; "<original name>";}
-    <name>[0]/<name>._val == {<value>}
-    <name>[1] == "<class>"
-    <name>._cl == <class>
-    <name>[2]/<name>._nm == "<original name>"
-    <name>._parent == <parent name>
-    <name>._arg == obj arg{<named objects from (<arguments>)>}
 
-    <name>(<arguments>); -> init <name>
-    (<neede args>){<value>}(<input args>); -> execution <value> with <args>
-    obj t{1;};
+    #
+    basic syntax
+    <class> <name>(<arguments>){<value>};
+    
+    static elements in all objects:
+    <name> == {
+        <value>;
+
+        static variable:
+            StObj __C ReadOnly
+            {<class>};
+            
+            StObj __N ReadOnly
+            {<original name>};
+            
+            StObj __P ReadOnly
+            {<Parent>};
+            
+            StObj __Arg ReadOnly
+            {<list named/indexed objects from (<arguments>)>};
+            
+            StObj __L ReadOnly
+            { get all local objects from <name> };
+
+        static methods:
+            meth __S
+            (obj C, Var N, obj V, \ List Args)
+            { <C> <N>(<Args>){<V>} declaration in <name> if it's already in <N>, then change <V> };
+            
+            meth __D
+            (Var N)
+            { delete obj <N> from <name> };
+    };
+
+    <name>(<arguments>); -> init <name> with <arguments>
+
+    (<needed args>){<value>}(<input args>); -> execution <value> with <args>
     #
 
     obj Name
