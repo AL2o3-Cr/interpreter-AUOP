@@ -40,4 +40,6 @@ built-in :
         * `duoble`
         * `str`  
         . . .
-    * 
+    * `meth` - execution in parent namespace
+* Variable :
+    * `_GLOBAL` - access to top objects from everywhere
