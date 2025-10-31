@@ -7,10 +7,10 @@ Declaration object
 `< class > < name >(< arguments >){< value >};`
 
 Execution < value > with < input args >  
-`(< needed args >){< value >}(< input args >);`
+`(< needed args >,\ < optional/indefinitely named args >){< value >}(< input args >);`
 
 For declarated object  
-`< name >(< args >)`
+`< name >(< args >);`
 
 SubObjects for any object :
 
@@ -34,12 +34,17 @@ built-in :
 
 * Classes :
     * `obj` - warp  
-    * `var` - sting or number for arguments
+    * `var` - sting or number for name of arguments
         * `int`
         * `float`
         * `duoble`
-        * `str`  
+        * `str`
+        * `bool`  
         . . .
     * `meth` - execution in parent namespace
 * Variable :
     * `_GLOBAL` - access to top objects from everywhere
+* Meth :
+    * `ifs(cond{< bool >}, true{< execed object >},\ false{< execed object >});`
+    * `while(cond, true,\ );`
+    * `foreach(code, count || str || _list, )`
