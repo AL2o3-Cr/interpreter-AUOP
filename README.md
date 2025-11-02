@@ -1,40 +1,43 @@
-# interpreter-AUOP
-AUOP - Absolutly Universal Objects Programming. File extension .UO
+# interpreter-UniJect
 
 Basic syntax :
 
 Declaration object  
-`< class > < name >(< arguments >){< value >};`
+``
 
-Execution < value > with < input args >  
+Realise object  
+``
+
+Attribute  
+``
+
+execute < value > with < input args >  
 `(< needed args >,\ < optional/indefinitely named args >){< value >}(< input args >);`
-
-For declarated object  
-`< name >(< args >);`
 
 SubObjects for any object :
 
-* `StaticObj __C {< class >};`
+* `_C`  
+class
 
-* `StaticObj __N {< original name >};`
+* `_N`  
+original name
 
-* `StaticObj __P {< Parent >};`
+* `_P`  
+Parent
 
-* `StaticObj __Arg {< list named/indexed objects from (< arguments >) >};`
+* `_Args`  
+list named/indexed objects from (< arguments >)
 
-* `StaticObj __L { get all local objects from < name > };`  
-\^ ReadOnly \^
+* `_M`  
+list attributes
 
-* `meth __S(obj C, Var N, obj V, \ List Args)`  
-`{declaration <C> <N>(<Args>){<V>} in the parent object of the method. If it's already in < N >, then change < V >};`
-
-* `meth __D(Var N){ delete obj < N > from < name > };`
+* `_L { get all local objects };`
 
 built-in :
 
 * Classes :
-    * `obj` - warp  
-    * `var` - sting or number for name of arguments
+    * `uj` - warp  
+    * `var` - string or number for name of arguments
         * `int`
         * `float`
         * `duoble`
@@ -44,7 +47,15 @@ built-in :
     * `meth` - execution in parent namespace
 * Variable :
     * `_GLOBAL` - access to top objects from everywhere
-* Meth :
+* Meths :
+    * `__D(class, name, value);`  
+    Declaration new object in 
+
+    * `__S(Var N, obj V);`  
+    Change `< V >` of an < name > in current namespace. Arguments add `__S(uj,"foo", {_Args.__D(class, name, {});})` is correct.
+
+    * `__R(Var N);`  
+    Remove obj < N > from < name >
     * `ifs(cond{< bool >}, true{< execed object >},\ false{< execed object >});`
     * `while(cond, true,\ );`
     * `foreach(code, count || str || _list, )`
