@@ -4,6 +4,8 @@
 <title>UniJect.md</title>
 </head>
 
+<button style="position: fixed; right: 5%" onclick="alert('Hello world!')"><span style="font-size: 170%">&uArr;</span></button>
+
 # Интерпретатор-UniJect
 
 Самое важное - это изменение синтаксиса прямо в процессе выполнения программы
@@ -21,31 +23,43 @@ Syntax 0
 `;` - оканчивает синтаксис, дальше - что он делает.  
 `ignore` - действие синтаксиса - игнориравание участка обрамлёного `#`.
 
-Программа на *UniJect* разделена на именые пространства. Любой объект - своя область имен. Но в любой `namespace` встроенны следущие имена:
-* `__D(class, name, value);`  
-Declaration new object in 
 
-* `__S(Var N, obj V);`  
-Change `< V >` of an < name > in current namespace. Arguments add `__S(uj,"foo", {_Args.__D(class, name, {});})` is correct.
+## Программа на *UniJect* состоит из объектов.
 
+У любого объекта своя область имен.  
+Объект класса `UJ` может быть функцией, хранилещем и классом, а также абсрактным классом(классом классов).  
+Выполняемая программа то же является обектом.
+
+### В любой объект встроенно следущее :
+
+* `__D(UJ$class, UJ$name, UJ$value);`  
+Объявление нового Объекта в Именом поле от куда был вызван этот метод
+
+* `__SC(UJ$one, UJ$two,\ UJ**)`  
+Умное сравнение
 * `__R(Var N);`  
-Remove obj < N > from < name >
-* `_C`  
-class
-* `_N`  
-original name
-* `_P`  
-Parent
-* `_G`  
-access to top objects from everywhere
-* `_Args`  
-list named/indexed objects from (< arguments >)
-* `_M`  
-list attributes
-* `_L`  
-all local objects
+Удаление Объекта
 
-Встр :
+* `_C`  
+Класс объекта
+* `_N`  
+Имя объекта
+* `_NO`  
+Изначальное имя
+* `_P`  
+Обращение к объекту в котором на ходится
+* `_G`  
+Обращение к именому полю выполняемой программы
+* `_Args`  
+Входящие аргументы, является объектом вида :  
+`{0{имя, класс, внутрянка}, 1{...}, ...}` вместо `0` и `1` может быть имя аргумента
+* `_M()`  
+Атрибуты
+* `_L()`  
+Список объектов в Именом поле от куда был вызван этот метод
+
+---
+## Встроенное :
 * syntax :
     ```
     Syntax 0
@@ -83,3 +97,4 @@ all local objects
     * `ifs(cond{< bool >}, true{< execed object >},\ false{< execed object >});`
     * `while(cond, true,\ );`
     * `foreach(code, count || str || _list, )`
+---
