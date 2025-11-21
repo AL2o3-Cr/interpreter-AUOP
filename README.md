@@ -1,10 +1,7 @@
-<head>
 <meta charset="UTF-8">
 <meta lang="RU">
-<title>UniJect.md</title>
-</head>
 
-<button style="position: fixed; right: 5%" onclick="alert('Hello world!')"><span style="font-size: 170%">&uArr;</span></button>
+<!--<button style="position: fixed; right: 5%" onclick=""><span style="font-size: 170%">&uArr;</span></button>-->
 
 # Интерпретатор-UniJect
 
